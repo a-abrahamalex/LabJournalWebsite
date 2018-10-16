@@ -93,6 +93,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -305,7 +308,7 @@ div.tocify {
 <p>This is an .Rmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.</p>
 <div id="my-first-post" class="section level1">
 <h1>My first post</h1>
-<p>2018 | 7 | 23 Last compiled: 2018-07-23</p>
+<p>2018 | 7 | 23 Last compiled: 2018-10-16</p>
 <p>Notice that whatever you define as a top level header, automatically gets put into the table of contents bar on the left.</p>
 <div id="second-level-header" class="section level2">
 <h2>Second level header</h2>
@@ -318,7 +321,7 @@ div.tocify {
 </div>
 <div id="my-second-post-note-the-order" class="section level1">
 <h1>My second post (note the order)</h1>
-<p>2018 | 7 | 23 Last compiled: 2018-07-23</p>
+<p>2018 | 7 | 23 Last compiled: 2018-10-16</p>
 <p>I’m writing this tutorial going from the top down. And, this is how it will be printed. So, notice the second post is second in the list. If you want your most recent post to be at the top, then make a new post starting at the top. If you want the oldest first, do, then keep adding to the bottom</p>
 </div>
 <div id="adding-r-stuff" class="section level1">
@@ -410,9 +413,110 @@ print(a)</code></pre>
 ##  [69]  69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85
 ##  [86]  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100</code></pre>
 </div>
-<div id="replace-this-with-problem-4" class="section level1">
-<h1>Replace this with problem 4</h1>
-<p>And keep going. Try to solve the problems with different scripts that provide the same solution. Good luck, Happy coding.</p>
+<div id="problem-4" class="section level1">
+<h1>Problem 4</h1>
+<pre class="r"><code># Solution #1
+sum(1:100)</code></pre>
+<pre><code>## [1] 5050</code></pre>
+<pre class="r"><code># Solution #2
+listOfNumbers = c(1:100)
+total = 0
+for(index in 1:length(listOfNumbers)) {
+  total = total + listOfNumbers[index] }
+print(total)</code></pre>
+<pre><code>## [1] 5050</code></pre>
+</div>
+<div id="problem-5" class="section level1">
+<h1>Problem 5</h1>
+<pre class="r"><code># Solution #1
+
+sumFunction = function(firstInteger, secondInteger) {
+  
+  # this function finds the sum of all the integers between two integers but not including the bounded integers
+  
+  # first identifies the larger integer and smaller integer
+  biggerInteger = max(firstInteger, secondInteger)
+  smallerInteger = min(firstInteger, secondInteger)
+  result = 0
+  
+  # adds to the result variable given the condition that the two integers are at least one integer apart
+  while((biggerInteger - smallerInteger) &gt; 1 ) {
+    smallerInteger = smallerInteger + 1
+    result = result + smallerInteger }
+  
+  return(result)
+}
+
+sumFunction(1,100)</code></pre>
+<pre><code>## [1] 4949</code></pre>
+</div>
+<div id="problem-6" class="section level1">
+<h1>Problem 6</h1>
+<pre class="r"><code>listOfOddNumbers = c()
+firstBound = 1
+secondBound = 100
+
+while(firstBound &lt; secondBound) {
+  # if the number is not divisible by two, it is added to the list of odd numbers
+  if(firstBound %% 2 != 0) {
+    listOfOddNumbers = append(listOfOddNumbers, firstBound) }
+  firstBound = firstBound + 1 }
+
+print(listOfOddNumbers)</code></pre>
+<pre><code>##  [1]  1  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45
+## [24] 47 49 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89 91
+## [47] 93 95 97 99</code></pre>
+</div>
+<div id="problem-7" class="section level1">
+<h1>Problem 7</h1>
+<pre class="r"><code># The goal is to identify the composite numbers first
+listOfNumbers = c(1:1000)
+compositeIndex = c()
+
+for(n in 1:length(listOfNumbers)) {
+  for(d in 1:length(listOfNumbers)) {
+    # the if statement determines if a number in the list is composite
+    if((listOfNumbers[n]/listOfNumbers[d] &gt; 1 &amp;&amp; listOfNumbers[n] %% listOfNumbers[d] == 0 &amp;&amp; listOfNumbers[d] != 1) || listOfNumbers[n] == 1) {
+      compositeIndex = append(compositeIndex, n) }
+  } }
+
+compositeIndex = unique(compositeIndex)
+# eliminates the composite numbers from the list
+listOfNumbers = listOfNumbers[-compositeIndex]
+print(listOfNumbers)</code></pre>
+<pre><code>##   [1]   2   3   5   7  11  13  17  19  23  29  31  37  41  43  47  53  59
+##  [18]  61  67  71  73  79  83  89  97 101 103 107 109 113 127 131 137 139
+##  [35] 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233
+##  [52] 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337
+##  [69] 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439
+##  [86] 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541 547 557
+## [103] 563 569 571 577 587 593 599 601 607 613 617 619 631 641 643 647 653
+## [120] 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769
+## [137] 773 787 797 809 811 821 823 827 829 839 853 857 859 863 877 881 883
+## [154] 887 907 911 919 929 937 941 947 953 967 971 977 983 991 997</code></pre>
+</div>
+<div id="problem-8" class="section level1">
+<h1>Problem 8</h1>
+<pre class="r"><code># generates 100 random numbers between 0 and 100
+round(runif(100) * 100)</code></pre>
+<pre><code>##   [1] 41 48 81 99 58 66 32 85 95 21 39 29 99 43 79 38 38  7 67 31 40 77  2
+##  [24]  8 20 80 96 14 95 13 92  7 25 16  5 64 31 20 50 55 64 43 32 59 70 54
+##  [47] 45 61 58 12 31  8 43  5 95 22 99 49 47 88 91 85 55  6 55 12 86 14  2
+##  [70] 29 25 50 71 35 93 91 83 56 18 34 50 28 93 92 20 54 37  6 12  4 96  6
+##  [93] 73 74 63 90 14 98 59 53</code></pre>
+</div>
+<div id="problem-9" class="section level1">
+<h1>Problem 9</h1>
+<pre class="r"><code># generates 100 random numbers between 1 and 10
+round(runif(100, 1, 10))</code></pre>
+<pre><code>##   [1]  9  9  5  7  6 10  2 10  9  9  9  2  8  4  5  3  7  4 10 10  5  5  3
+##  [24]  4  5  8  6  5  6  5  1  2  5  9  3  7  7  9  2  8  5  7  7  2  4  6
+##  [47]  8  6  6  1  7  2  3  6  4  4  2  2  5 10  4  5  7  2  7  2  4  4  3
+##  [70]  3  5  6  4  4  2  9  6  3  5  1  4  7  3  3  6  2  5  4  6  4  3  6
+##  [93]  6  2  4  1  7  2  5  2</code></pre>
+</div>
+<div id="problem-10" class="section level1">
+<h1>Problem 10</h1>
 </div>
 
 
