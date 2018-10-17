@@ -123,6 +123,100 @@ print(a)
 
 ```
 
-# Replace this with problem 4
+# Problem 4
 
-And keep going. Try to solve the problems with different scripts that provide the same solution. Good luck, Happy coding.
+```{r}
+# Solution #1
+sum(1:100)
+
+# Solution #2
+listOfNumbers = c(1:100)
+total = 0
+for(index in 1:length(listOfNumbers)) {
+  total = total + listOfNumbers[index] }
+print(total)
+
+```
+
+# Problem 5
+
+```{r}
+# Solution #1
+
+sumFunction = function(firstInteger, secondInteger) {
+  
+  # this function finds the sum of all the integers between two integers but not including the bounded integers
+  
+  # first identifies the larger integer and smaller integer
+  biggerInteger = max(firstInteger, secondInteger)
+  smallerInteger = min(firstInteger, secondInteger)
+  result = 0
+  
+  # adds to the result variable given the condition that the two integers are at least one integer apart
+  while((biggerInteger - smallerInteger) > 1 ) {
+    smallerInteger = smallerInteger + 1
+    result = result + smallerInteger }
+  
+  return(result)
+}
+
+sumFunction(1,100)
+```
+
+# Problem 6
+
+```{r}
+listOfOddNumbers = c()
+firstBound = 1
+secondBound = 100
+
+while(firstBound < secondBound) {
+  # if the number is not divisible by two, it is added to the list of odd numbers
+  if(firstBound %% 2 != 0) {
+    listOfOddNumbers = append(listOfOddNumbers, firstBound) }
+  firstBound = firstBound + 1 }
+
+print(listOfOddNumbers)
+
+```
+
+# Problem 7
+
+```{r}
+# The goal is to identify the composite numbers first
+listOfNumbers = c(1:1000)
+compositeIndex = c()
+
+for(n in 1:length(listOfNumbers)) {
+  for(d in 1:length(listOfNumbers)) {
+    # the if statement determines if a number in the list is composite
+    if((listOfNumbers[n]/listOfNumbers[d] > 1 && listOfNumbers[n] %% listOfNumbers[d] == 0 && listOfNumbers[d] != 1) || listOfNumbers[n] == 1) {
+      compositeIndex = append(compositeIndex, n) }
+  } }
+
+compositeIndex = unique(compositeIndex)
+# eliminates the composite numbers from the list
+listOfNumbers = listOfNumbers[-compositeIndex]
+print(listOfNumbers)
+```
+
+# Problem 8
+
+```{r}
+# generates 100 random numbers between 0 and 100
+round(runif(100) * 100)
+```
+
+# Problem 9
+
+```{r}
+# generates 100 random numbers between 1 and 10
+round(runif(100, 1, 10))
+```
+
+# Problem 10
+
+```{r}
+lolll
+```
+
