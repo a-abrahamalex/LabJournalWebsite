@@ -23,7 +23,7 @@ This is an .Rmd file. It is plain text with special features. Any time you write
 
 2018 | 7 | 23 Last compiled: `r Sys.Date()`
 
-Notice that whatever you define as a top level header, automatically gets put into the table of contents bar on the left. 
+lol
 
 ## Second level header
 
@@ -217,6 +217,6 @@ round(runif(100, 1, 10))
 # Problem 10
 
 ```{r}
-lolll
+
 ```
 
